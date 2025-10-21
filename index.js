@@ -25,6 +25,11 @@ function getRandomNumber(min, max) {
 function checkGuess() {
   // Get value from guess input element
   const guess = parseInt(guessInput.value, 10);
+
+  if(Number.isNaN(guess) || guess <= 0 || guess > 99) {
+    return;
+  }
+
   attempts = attempts + 1;
 
   hideAllMessages();
@@ -96,7 +101,7 @@ resetButton.addEventListener('click', setup);
 
 guessInput.addEventListener('input', (event) => {
   const guess = parseInt(event.target.value, 10);
-  if(guess <= 0 | guess > 99) {
+  if(Number.isNaN(guess) || guess <= 0 || guess > 99) {
     submitButton.disabled = true;
   } else {
     submitButton.disabled = false;
